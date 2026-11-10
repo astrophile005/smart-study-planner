@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Study Task</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6fb;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px #ddd;
+        }
+
+        input, select {
+            width: 95%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            background: #536dfe;
+            color: white;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        a {
+            margin-left: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>✏️ Edit Study Task</h1>
+
+        <form method="POST">
+
+            <label>Task Name:</label>
+            <input type="text" name="title"
+                   value="{{ task['title'] }}" required>
+
+            <label>Subject:</label>
+            <input type="text" name="subject"
+                   value="{{ task['subject'] }}" required>
+
+            <label>Due Date:</label>
+            <input type="date" name="due_date"
+                   value="{{ task['due_date'] }}" required>
+
+            <label>Priority:</label>
+            <select name="priority" required>
+                <option value="High" {% if task['priority'] == 'High' %}selected{% endif %}>High</option>
+                <option value="Medium" {% if task['priority'] == 'Medium' %}selected{% endif %}>Medium</option>
+                <option value="Low" {% if task['priority'] == 'Low' %}selected{% endif %}>Low</option>
+            </select>
+
+            <button type="submit">Save Changes</button>
+
+            <a href="/">Cancel</a>
+
+        </form>
+
+    </div>
+</body>
+</html>
